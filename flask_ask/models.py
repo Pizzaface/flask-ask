@@ -380,6 +380,15 @@ class confirm_intent(_Response):
         if updated_intent:
             self._response['directives'][0]['updatedIntent'] = updated_intent
 
+class display(_Response):
+    """
+    Allows for a statement with 'shouldEndSession' omitted, allowing for touch inputs from the display.
+    Use with Display_Render and List_Display_Render
+    Will not accept spoken inputs without keyword (alexa/etc.).
+    Populate @ask.display_element_selected 
+    """
+    def __init__(self, speech):
+        super(display, self).__init__(speech)
 
 class audio(_Response):
     """Returns a response object with an Amazon AudioPlayer Directive.
